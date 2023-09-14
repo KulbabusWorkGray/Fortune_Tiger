@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fortune Tiger</string>
+    <string name="loading">LOADING...</string>
+    <string name="reconnect">Reconnect</string>
+</resources>
