@@ -79,6 +79,7 @@ fun ScreenLoader(
         viewModel.regulate()
         viewModel.events.collectLatest {
             Log.d("TAG", "collect event : $it")
+//            Toast.makeText(activity, it.reason, Toast.LENGTH_LONG).show()
             when (it) {
                 is ControllerEvent.EventToTarget -> {
                     navController.navigate(Screen.Target.name) {
@@ -86,7 +87,7 @@ fun ScreenLoader(
                     }
                 }
 
-                ControllerEvent.EventToReconnect -> {
+                is ControllerEvent.EventToReconnect -> {
                     navController.navigate(Screen.Reconnect.name) {
                         popUpTo(Screen.Loader.name) { inclusive = true }
                     }

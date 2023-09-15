@@ -53,31 +53,31 @@ class ControllerViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             val response = api.request(BuildConfig.URL)
             Log.d("TAG", "response = $response")
-            if (!response.isSuccessful) {
-                _events.emit(ControllerEvent.EventToReconnect)
-            } else {
-                when (response.code()) {
-                    404 -> _events.emit(ControllerEvent.EventToSlots)
-                    200 -> {
-                        response.body()?.let { url ->
-                            val sp = application.getSharedPreferences(MainApplication.SP_NAME, Context.MODE_PRIVATE)
-                            sp.edit().apply {
-                                putString(MainApplication.SP_KEY, url)
-                                apply()
-                            }
-                            _events.emit(ControllerEvent.EventToTarget(url))
-
-                        } ?: _events.emit(ControllerEvent.EventToReconnect)
-                    }
-                    else -> _events.emit(ControllerEvent.EventToReconnect)
+            when {
+                !response.isSuccessful && response.code() == 404 -> _events.emit(ControllerEvent.EventToSlots)
+                !response.isSuccessful -> {
+                    _events.emit(ControllerEvent.EventToReconnect("response not succcess"))
                 }
+                response.isSuccessful && response.code() == 200 -> {
+                    response.body()?.let { url ->
+                        val sp = application.getSharedPreferences(MainApplication.SP_NAME, Context.MODE_PRIVATE)
+                        sp.edit().apply {
+                            putString(MainApplication.SP_KEY, url)
+                            apply()
+                        }
+                        _events.emit(ControllerEvent.EventToTarget(url))
 
+                    } ?: _events.emit(ControllerEvent.EventToReconnect("body empty"))
+                }
+                response.isSuccessful -> {
+                    _events.emit(ControllerEvent.EventToReconnect("response code = ${response.code()}"))
+                }
             }
         }
     }
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, e ->
         Log.d("TAG", "e : ${e.message}")
-        viewModelScope.launch { _events.emit(ControllerEvent.EventToReconnect) }
+        viewModelScope.launch { _events.emit(ControllerEvent.EventToReconnect(e.message.toString())) }
     }
 }
