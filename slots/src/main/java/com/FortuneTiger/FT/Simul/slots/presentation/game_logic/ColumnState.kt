@@ -15,9 +15,11 @@ data class ColumnState (
                 val usedSlotsIndices = mutableSetOf<Int>()
                 repeat(11) {
                     val availableSlots : Set<Int> = (0..10).toSet().minus(usedSlotsIndices)
+                    val slotIndex = availableSlots.random()
+                    usedSlotsIndices.add(slotIndex)
                     add(
                         Slot(
-                            bitmap = Bitmaps.slots[availableSlots.random()],
+                            bitmap = Bitmaps.slots[slotIndex],
                             y = (it * SLOT_HEIGHT) - SLOT_HEIGHT
                         )
                     )
