@@ -36,9 +36,7 @@ class SlotViewModel @Inject constructor(
             job = viewModelScope.launch(Dispatchers.IO) {
                 setupSpin()
                 while (true) {
-                    val frameTime = measureTimeMillis {
-                        frame()
-                    }
+                    val frameTime = measureTimeMillis { frame() }
                     if (frameTime < FRAME_TIME) delay(FRAME_TIME - frameTime)
                 }
             }
@@ -49,23 +47,23 @@ class SlotViewModel @Inject constructor(
         _gameState.update {
             var columnsStopped = it.columnsStopped
             val newColumnsStopped = it.spinDurationMillis.toInt() / STOPS_DELAY
-            if (newColumnsStopped > columnsStopped && it.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y == FIRST_SLOT_Y }) {
+            if (newColumnsStopped > columnsStopped && it.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y <= FIRST_SLOT_Y + SHIFT_SPEED }) {
                 columnsStopped ++
             }
-            it.copy(
-                timeMillis = System.currentTimeMillis(),
-                spinDurationMillis = it.spinDurationMillis + FRAME_TIME,
-                columnsStopped = columnsStopped
-            )
+            it.copy(columnsStopped = columnsStopped)
         }
         for ((i, col) in _gameState.value.columnStates.withIndex()) {
             if (i + 1 > _gameState.value.columnsStopped) {
                 col.slots.forEach {
                     it.y += SHIFT_SPEED
-                    if (it.y > SLOT_HEIGHT * 10) it.y = FIRST_SLOT_Y
+                    if (it.y > SLOT_HEIGHT * 10) it.y = FIRST_SLOT_Y + (it.y % SLOT_HEIGHT)
                 }
             }
         }
+        _gameState.update { it.copy(
+            timeMillis = System.currentTimeMillis(),
+            spinDurationMillis = it.spinDurationMillis + FRAME_TIME
+        ) }
         if (_gameState.value.spinDurationMillis > TOTAL_SPIN_DURATION) {
             delay(1000)
             _gameState.update {

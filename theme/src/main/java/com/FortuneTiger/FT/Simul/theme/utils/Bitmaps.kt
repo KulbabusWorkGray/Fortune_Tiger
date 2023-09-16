@@ -1,13 +1,8 @@
 package com.FortuneTiger.FT.Simul.theme.utils
 
-/**
- * Put your resources in theme module to reuse them in controller screen
- */
-
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -53,28 +48,17 @@ object Bitmaps {
         isInitialized = true
     }
 
-    /**
-     * @param keepScale use FALSE for background; TRUE for all game objects, this makes sure your
-     * game objects keep size relative to device screen resolution, and background goes as is
-     */
     private fun initBitmap(
         @DrawableRes res: Int,
         width: Int,
         height: Int,
         resources: Resources,
-        keepScale: Boolean = true,
-        rotateAngleClockwise: Float = 0f
     ): ImageBitmap {
-        val bitmap = Bitmap.createScaledBitmap(
+        return Bitmap.createScaledBitmap(
             BitmapFactory.decodeResource(resources, res),
-            /*if (keepScale) width.resizeWidth() else */width,
-            /*if (keepScale) height.resizeHeight() else */height,
+            width,
+            height,
             false
-        )
-        val matrix = Matrix()
-        matrix.setRotate(rotateAngleClockwise)
-        return Bitmap.createBitmap(
-            bitmap, 0, 0, bitmap.width, bitmap.height, matrix, false
         ).asImageBitmap()
     }
 }
