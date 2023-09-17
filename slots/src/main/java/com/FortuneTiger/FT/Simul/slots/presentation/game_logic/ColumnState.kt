@@ -20,7 +20,8 @@ data class ColumnState (
                     add(
                         Slot(
                             bitmap = Bitmaps.slots[slotIndex],
-                            y = ((i * SLOT_HEIGHT) - SLOT_HEIGHT)
+                            y = ((i * SLOT_HEIGHT) - SLOT_HEIGHT),
+                            bitmapId = slotIndex+1
                         ).also { Log.d("TAG", "y = ${it.y}, pos = ${it.position}") }
                     )
                 }
@@ -31,7 +32,8 @@ data class ColumnState (
 
 data class Slot(
     val bitmap: ImageBitmap,
-    var y : Float
+    var y : Float,
+    val bitmapId : Int
 ) {
     val position : Int
         get() = ((y + SLOT_HEIGHT) / SLOT_HEIGHT).roundToInt()

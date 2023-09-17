@@ -12,6 +12,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GameState
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
 import com.FortuneTiger.FT.Simul.theme.SlotAreaColumnColors
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_AREA_PADDING
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMNS
@@ -66,5 +67,17 @@ fun SlotCanvas(
                 )
             }
         }
+        drawLine(
+            color = Color.Blue,
+            start = Offset(
+                x = 0f,
+                y = SlotViewModel.WIN_Y
+            ),
+            end = Offset(
+                x = 1000f,
+                y = SlotViewModel.WIN_Y
+            ),
+            strokeWidth = 10f
+        )
     }
 }

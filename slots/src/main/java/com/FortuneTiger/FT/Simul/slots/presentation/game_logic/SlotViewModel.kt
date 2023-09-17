@@ -1,13 +1,14 @@
 package com.FortuneTiger.FT.Simul.slots.presentation.game_logic
 
 import android.media.MediaPlayer
+import android.util.Log
+import androidx.core.util.toRange
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.FortuneTiger.FT.Simul.theme.screen.FRAME_TIME
 import com.FortuneTiger.FT.Simul.theme.screen.SHIFT_SPEED
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_HEIGHT
 import com.FortuneTiger.FT.Simul.theme.screen.STOPS_DELAY
-import com.FortuneTiger.FT.Simul.theme.screen.TOTAL_SPIN_DURATION
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -43,13 +44,25 @@ class SlotViewModel @Inject constructor(
     }
 
     private suspend fun frame() {
-        _gameState.update {
-            var columnsStopped = it.columnsStopped
-            val newColumnsStopped = it.spinDurationMillis.toInt() / STOPS_DELAY
-            if (newColumnsStopped > columnsStopped && it.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y in ((SLOT_HEIGHT * 4) - 10 .. ((SLOT_HEIGHT * 4) + 10)) }) {
+        val isWinGame = /*_gameState.value.gamesBeforeWinGame == 0*/ true
+
+        _gameState.update { s ->
+            var columnsStopped = s.columnsStopped
+            val newColumnsStopped = (s.spinDurationMillis.toInt() / STOPS_DELAY).coerceAtMost(5)
+
+            val secondCondition = if (isWinGame && newColumnsStopped > 1) {
+                val firstColWinBitmapId = s.columnStates[0].slots.find { slot -> slot.y in stopRange }!!.bitmapId.also { Log.d("TAG", "winBitmapId = $it") }
+                val stopColumnBitmapIdAtPos = s.columnStates[newColumnsStopped-1].slots.find { slot -> slot.y in stopRange }?.bitmapId
+                stopColumnBitmapIdAtPos?.let { id -> Log.d("TAG", "bitmapId at pos = $id") }
+                firstColWinBitmapId == stopColumnBitmapIdAtPos
+            } else if (newColumnsStopped > columnsStopped) {
+                s.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y in stopRange }
+            } else true
+
+            if (newColumnsStopped > columnsStopped && secondCondition) {
                 columnsStopped ++
             }
-            it.copy(columnsStopped = columnsStopped)
+            s.copy(columnsStopped = columnsStopped)
         }
         for ((i, col) in _gameState.value.columnStates.withIndex()) {
             if (i + 1 > _gameState.value.columnsStopped) {
@@ -63,16 +76,13 @@ class SlotViewModel @Inject constructor(
             timeMillis = System.currentTimeMillis(),
             spinDurationMillis = it.spinDurationMillis + FRAME_TIME
         ) }
-        if (_gameState.value.spinDurationMillis > TOTAL_SPIN_DURATION) {
-            viewModelScope.launch {
-                delay(1000)
-                _gameState.update {
-                    it.copy(
-                        gamePhase = GamePhase.Result(isWin = false)
-                    )
-                }
-                job?.cancel()
+        if (_gameState.value.columnsStopped >= 5) {
+            _gameState.update {
+                it.copy(
+                    gamePhase = GamePhase.Result(isWin = false)
+                )
             }
+            job?.cancel()
         }
     }
 
@@ -91,5 +101,10 @@ class SlotViewModel @Inject constructor(
 
     fun toMenu() {
         _gameState.value = GameState()
+    }
+
+    companion object {
+        private val stopRange = ((SLOT_HEIGHT * 2) - 10 .. ((SLOT_HEIGHT * 2) + 10))
+        val WIN_Y = (stopRange.toRange().lower + stopRange.endInclusive) / 2
     }
 }
