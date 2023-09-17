@@ -1,6 +1,7 @@
 package com.FortuneTiger.FT.Simul.slots.presentation.game_logic
 
 import android.media.MediaPlayer
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.FortuneTiger.FT.Simul.theme.screen.FIRST_SLOT_Y
@@ -53,6 +54,7 @@ class SlotViewModel @Inject constructor(
             it.copy(columnsStopped = columnsStopped)
         }
         for ((i, col) in _gameState.value.columnStates.withIndex()) {
+            Log.d("TAG", "columns stopped = ${_gameState.value.columnsStopped}")
             if (i + 1 > _gameState.value.columnsStopped) {
                 col.slots.forEach {
                     it.y += SHIFT_SPEED
@@ -65,13 +67,15 @@ class SlotViewModel @Inject constructor(
             spinDurationMillis = it.spinDurationMillis + FRAME_TIME
         ) }
         if (_gameState.value.spinDurationMillis > TOTAL_SPIN_DURATION) {
-            delay(1000)
-            _gameState.update {
-                it.copy(
-                    gamePhase = GamePhase.Result(isWin = false)
-                )
+            viewModelScope.launch {
+                delay(1000)
+                _gameState.update {
+                    it.copy(
+                        gamePhase = GamePhase.Result(isWin = false)
+                    )
+                }
+                job?.cancel()
             }
-            job?.cancel()
         }
     }
 
