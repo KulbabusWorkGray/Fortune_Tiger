@@ -7,6 +7,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GamePhase
 import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotScreen
 import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.screens.ScreenGame
@@ -35,10 +36,13 @@ fun ScreenSlots() {
             ScreenMenu(viewModel = viewModel)
         }
         SlotScreen.GAME -> {
-            ScreenGame(viewModel = viewModel)
+            if (state.gamePhase is GamePhase.Result && state.gamePhase.isCelebrationScreen) {
+                ScreenWin()
+            } else {
+                ScreenGame(viewModel = viewModel)
+            }
         }
-        SlotScreen.WIN -> {
-            ScreenWin()
-        }
+
+        else -> {}
     }
 }

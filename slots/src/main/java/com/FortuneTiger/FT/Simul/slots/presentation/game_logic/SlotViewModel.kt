@@ -44,7 +44,7 @@ class SlotViewModel @Inject constructor(
     }
 
     private suspend fun frame() {
-        val isWinGame = _gameState.value.gamesBeforeWinGame == 0
+        val isWinGame = /*_gameState.value.gamesBeforeWinGame == 0*/ true
 
         _gameState.update { s ->
             var columnsStopped = s.columnsStopped
@@ -79,11 +79,27 @@ class SlotViewModel @Inject constructor(
         if (_gameState.value.columnsStopped >= 5) {
             _gameState.update {
                 it.copy(
-                    gamePhase = GamePhase.Result(isWin = false),
+                    gamePhase = GamePhase.Result(isWin = isWinGame, isCelebrationScreen = false),
                     gamesBeforeWinGame = if (it.gamesBeforeWinGame == 0) 4 else it.gamesBeforeWinGame - 1
                 )
             }
+            if (isWinGame) {
+                toCelebrationScreen()
+            }
             job?.cancel()
+        }
+    }
+
+    private fun toCelebrationScreen() {
+        viewModelScope.launch {
+            delay(1000)
+            _gameState.update {
+                it.copy(gamePhase = GamePhase.Result(isWin = true, isCelebrationScreen = true))
+            }
+            delay(2500)
+            _gameState.update {
+                it.copy(gamePhase = GamePhase.Result(isWin = true, isCelebrationScreen = false))
+            }
         }
     }
 

@@ -24,5 +24,5 @@ enum class SlotScreen {
 sealed interface GamePhase {
     data object Bet : GamePhase
     data object Spin : GamePhase
-    data class Result(val isWin: Boolean = false) : GamePhase
+    data class Result(val isWin: Boolean = false, val isCelebrationScreen: Boolean = false) : GamePhase
 }
