@@ -1,10 +1,11 @@
 package com.FortuneTiger.FT.Simul.slots.presentation.game_logic
 
 import android.media.MediaPlayer
-import android.util.Log
 import androidx.core.util.toRange
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.FortuneTiger.FT.Simul.theme.screen.BALANCE
+import com.FortuneTiger.FT.Simul.theme.screen.BET_STEP
 import com.FortuneTiger.FT.Simul.theme.screen.FRAME_TIME
 import com.FortuneTiger.FT.Simul.theme.screen.SHIFT_SPEED
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_HEIGHT
@@ -44,16 +45,15 @@ class SlotViewModel @Inject constructor(
     }
 
     private suspend fun frame() {
-        val isWinGame = /*_gameState.value.gamesBeforeWinGame == 0*/ true
+        val isWinGame = _gameState.value.gamesBeforeWinGame == 0
 
         _gameState.update { s ->
             var columnsStopped = s.columnsStopped
             val newColumnsStopped = (s.spinDurationMillis.toInt() / STOPS_DELAY).coerceAtMost(5)
 
             val secondCondition = if (isWinGame && newColumnsStopped > 1) {
-                val firstColWinBitmapId = s.columnStates[0].slots.find { slot -> slot.y in stopRange }!!.bitmapId.also { Log.d("TAG", "winBitmapId = $it") }
+                val firstColWinBitmapId = s.columnStates[0].slots.find { slot -> slot.y in stopRange }!!.bitmapId
                 val stopColumnBitmapIdAtPos = s.columnStates[newColumnsStopped-1].slots.find { slot -> slot.y in stopRange }?.bitmapId
-                stopColumnBitmapIdAtPos?.let { id -> Log.d("TAG", "bitmapId at pos = $id") }
                 firstColWinBitmapId == stopColumnBitmapIdAtPos
             } else if (newColumnsStopped > columnsStopped) {
                 s.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y in stopRange }
@@ -78,9 +78,13 @@ class SlotViewModel @Inject constructor(
         ) }
         if (_gameState.value.columnsStopped >= 5) {
             _gameState.update {
+                var newBalance = if (isWinGame) it.balance + it.bet else it.balance - it.bet.coerceAtLeast(0)
+                if (newBalance == 0) newBalance = BALANCE
                 it.copy(
-                    gamePhase = GamePhase.Result(isWin = isWinGame, isCelebrationScreen = false),
-                    gamesBeforeWinGame = if (it.gamesBeforeWinGame == 0) 4 else it.gamesBeforeWinGame - 1
+                    gamePhase = GamePhase.Bet,
+                    gamesBeforeWinGame = if (it.gamesBeforeWinGame == 0) 4 else it.gamesBeforeWinGame - 1,
+                    balance = newBalance,
+                    bet = it.bet.coerceIn(0, newBalance)
                 )
             }
             if (isWinGame) {
@@ -98,7 +102,7 @@ class SlotViewModel @Inject constructor(
             }
             delay(2500)
             _gameState.update {
-                it.copy(gamePhase = GamePhase.Result(isWin = true, isCelebrationScreen = false))
+                it.copy(gamePhase = GamePhase.Bet)
             }
         }
     }
@@ -118,6 +122,14 @@ class SlotViewModel @Inject constructor(
 
     fun toMenu() {
         _gameState.value = GameState()
+    }
+
+    fun betMinus() {
+        _gameState.update { it.copy(bet = (it.bet - BET_STEP).coerceAtLeast(0)) }
+    }
+
+    fun betPlus() {
+        _gameState.update { it.copy(bet = (it.bet + BET_STEP).coerceAtMost(it.balance)) }
     }
 
     companion object {

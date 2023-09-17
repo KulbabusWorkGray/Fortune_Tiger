@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.BalanceArea
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.SlotArea
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.SpinButton
 import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
@@ -73,7 +74,7 @@ fun ScreenGame(
 
         Column(
             verticalArrangement = Arrangement.spacedBy(
-                space = 16.dp,
+                space = 4.dp,
                 alignment = Alignment.Bottom
             ),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -81,6 +82,7 @@ fun ScreenGame(
         ) {
             SlotArea(viewModel = viewModel)
             SpinButton(viewModel = viewModel)
+            BalanceArea(viewModel = viewModel)
         }
     }
 }

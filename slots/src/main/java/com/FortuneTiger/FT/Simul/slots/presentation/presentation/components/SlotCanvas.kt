@@ -23,7 +23,6 @@ import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMNS
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMN_HEIGHT
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMN_WIDTH
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_HEIGHT
-import com.FortuneTiger.FT.Simul.theme.screen.SYMBOL_SIZE
 
 @Composable
 fun SlotCanvas(
@@ -57,17 +56,6 @@ fun SlotCanvas(
                     topLeft = Offset(
                         x = colStartX,
                         y = slot.y
-                    )
-                )
-                drawLine(
-                    color = Color.Red,
-                    start = Offset(
-                        x = colStartX,
-                        y = slot.y + SYMBOL_SIZE
-                    ),
-                    end = Offset(
-                        x = colStartX + SYMBOL_SIZE,
-                        y = slot.y + SYMBOL_SIZE
                     )
                 )
             }

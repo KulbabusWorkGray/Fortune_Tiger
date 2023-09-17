@@ -1,5 +1,7 @@
 package com.FortuneTiger.FT.Simul.slots.presentation.game_logic
 
+import com.FortuneTiger.FT.Simul.theme.screen.BALANCE
+import com.FortuneTiger.FT.Simul.theme.screen.BET
 import com.FortuneTiger.FT.Simul.theme.screen.GAMES_BEFORE_WIN_GAME
 
 data class GameState(
@@ -10,7 +12,10 @@ data class GameState(
     val spinDurationMillis : Long = 0,
     val columnsStopped : Int = 0,
 
-    val gamesBeforeWinGame : Int = GAMES_BEFORE_WIN_GAME
+    val gamesBeforeWinGame : Int = GAMES_BEFORE_WIN_GAME,
+
+    val balance : Int = BALANCE,
+    val bet : Int = BET
 ) {
     companion object {
         fun randomColumnStates() = List(5) { ColumnState.startColumnState() }

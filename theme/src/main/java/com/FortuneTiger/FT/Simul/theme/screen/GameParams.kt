@@ -32,3 +32,8 @@ val TOTAL_SPIN_DURATION = STOPS_DELAY * SLOT_COLUMNS
 // Win
 const val GAMES_BEFORE_WIN_GAME = 4
 const val WIN_SYMBOL_POS = 3
+
+// Bet
+const val BALANCE = 10_000
+const val BET = 500
+const val BET_STEP = 100
