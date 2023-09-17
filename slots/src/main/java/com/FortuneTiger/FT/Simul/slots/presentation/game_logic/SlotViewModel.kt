@@ -1,10 +1,8 @@
 package com.FortuneTiger.FT.Simul.slots.presentation.game_logic
 
 import android.media.MediaPlayer
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.FortuneTiger.FT.Simul.theme.screen.FIRST_SLOT_Y
 import com.FortuneTiger.FT.Simul.theme.screen.FRAME_TIME
 import com.FortuneTiger.FT.Simul.theme.screen.SHIFT_SPEED
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_HEIGHT
@@ -48,17 +46,16 @@ class SlotViewModel @Inject constructor(
         _gameState.update {
             var columnsStopped = it.columnsStopped
             val newColumnsStopped = it.spinDurationMillis.toInt() / STOPS_DELAY
-            if (newColumnsStopped > columnsStopped && it.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y <= FIRST_SLOT_Y + SHIFT_SPEED }) {
+            if (newColumnsStopped > columnsStopped && it.columnStates[newColumnsStopped-1].slots.any { slot -> slot.y in ((SLOT_HEIGHT * 4) - 10 .. ((SLOT_HEIGHT * 4) + 10)) }) {
                 columnsStopped ++
             }
             it.copy(columnsStopped = columnsStopped)
         }
         for ((i, col) in _gameState.value.columnStates.withIndex()) {
-            Log.d("TAG", "columns stopped = ${_gameState.value.columnsStopped}")
             if (i + 1 > _gameState.value.columnsStopped) {
                 col.slots.forEach {
                     it.y += SHIFT_SPEED
-                    if (it.y > SLOT_HEIGHT * 10) it.y = FIRST_SLOT_Y + (it.y % SLOT_HEIGHT)
+                    if (it.y > SLOT_HEIGHT * 10) it.y = -SLOT_HEIGHT
                 }
             }
         }
