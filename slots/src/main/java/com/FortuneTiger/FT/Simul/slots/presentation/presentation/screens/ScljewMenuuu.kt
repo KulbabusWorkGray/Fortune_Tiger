@@ -144,7 +144,7 @@ fun ScljewMenuuu(
 fun SettingsDialog(
     onMusicToggle: () -> Unit,
     onClose: () -> Unit,
-    musicOn : Boolean
+    musicOn: Boolean
 ) {
     var size by remember { mutableStateOf(IntSize.Zero) }
     Dialog(onDismissRequest = onClose) {
@@ -160,6 +160,20 @@ fun SettingsDialog(
                     size = it
                 }
         ) {
+            Box(
+                modifier = Modifier
+                    .width(60.dp)
+                    .height(30.dp)
+                    .offset(
+                        x = (size.width * 0.40f).dpFromPx(),
+                        y = (size.height * 0.8f).dpFromPx()
+                    )
+                    .clickable(
+                        interactionSource = MutableInteractionSource(),
+                        indication = null,
+                        onClick = { onClose() }
+                    )
+            )
             Image(
                 painter = painterResource(id = RTheme.drawable.off),
                 contentDescription = null,
@@ -176,7 +190,7 @@ fun SettingsDialog(
                         indication = null,
                         onClick = { }
                     )
-                )
+            )
             Image(
                 painter = painterResource(id = if (musicOn) RTheme.drawable.on else RTheme.drawable.off),
                 contentDescription = null,
