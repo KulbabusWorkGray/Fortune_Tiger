@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.FortuneTiger.FT.Simul.theme.R
 
 @Composable
-fun Loader() {
+fun Loasdwer() {
     val infiniteTransition = rememberInfiniteTransition()
     val angle by infiniteTransition.animateFloat(
         initialValue = 0F,

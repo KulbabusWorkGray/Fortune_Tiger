@@ -11,10 +11,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowCompat
-import com.FortuneTiger.FT.Simul.target.presentation.webView.MyWebView
+import com.FortuneTiger.FT.Simul.target.presentation.webView.ColntewoWEbVieoiuww
 
 @Composable
-fun GrayWebViewHolder.ScreenTarget() {
+fun GrwriuVIewWljlj.ScreenTarget() {
     var url : String? by remember { mutableStateOf(null) }
     val sp = LocalContext.current.getSharedPreferences("sp", Context.MODE_PRIVATE)
     val activity = LocalContext.current as Activity
@@ -24,10 +24,10 @@ fun GrayWebViewHolder.ScreenTarget() {
     }
     url?.let {
         Log.d("TAG", "url = $it")
-        MyWebView(
-            img = img,
-            setFilePathCallback = { filePathCallback = it },
-            url = it
+        ColntewoWEbVieoiuww(
+            oiwqeu = img,
+            lkjfksdjf = { filePathCallback = it },
+            oweurdlfj = it
         )
     }
 }

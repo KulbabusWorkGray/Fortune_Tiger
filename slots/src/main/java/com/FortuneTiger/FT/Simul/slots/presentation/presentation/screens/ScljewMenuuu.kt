@@ -33,16 +33,16 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.FortuneTiger.FT.Simul.slots.R
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
-import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
-import com.FortuneTiger.FT.Simul.theme.screen.SCREEN_HEIGHT
-import com.FortuneTiger.FT.Simul.theme.screen.SCREEN_WIDTH
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
+import com.FortuneTiger.FT.Simul.theme.iquwye
+import com.FortuneTiger.FT.Simul.theme.screen.S_HEIGHTLJWLRJ
+import com.FortuneTiger.FT.Simul.theme.screen.S_WIDlkwljg
 import com.FortuneTiger.FT.Simul.theme.screen.dpFromPx
 import com.FortuneTiger.FT.Simul.theme.R as RTheme
 
 @Composable
-fun ScreenMenu(
-    viewModel: SlotViewModel
+fun ScljewMenuuu(
+    viewModel: SltBrain
 ) {
     val toggleMusic = {
         if (viewModel.mediaPlayer.isPlaying) viewModel.mediaPlayer.pause()
@@ -69,7 +69,7 @@ fun ScreenMenu(
                 .fillMaxSize()
                 .background(
                     brush = Brush.verticalGradient(
-                        colors = BackgroundGradientColors
+                        colors = iquwye
                     )
                 )
         ) {
@@ -122,15 +122,15 @@ fun ScreenMenu(
                         painter = painterResource(id = RTheme.drawable.tiger_menu),
                         contentDescription = null,
                         modifier = Modifier
-                            .height((SCREEN_HEIGHT / 1.7f).dpFromPx())
+                            .height((S_HEIGHTLJWLRJ / 1.7f).dpFromPx())
                             .fillMaxWidth(0.9f)
-                            .offset(x = (SCREEN_WIDTH / 10).dpFromPx()),
+                            .offset(x = (S_WIDlkwljg / 10).dpFromPx()),
                         contentScale = ContentScale.Fit
                     )
                     Image(
                         painter = painterResource(id = RTheme.drawable.coins_menu),
                         contentDescription = null,
-                        modifier = Modifier.width((SCREEN_WIDTH * 3).dpFromPx()),
+                        modifier = Modifier.width((S_WIDlkwljg * 3).dpFromPx()),
                         contentScale = ContentScale.FillWidth
                     )
                 }

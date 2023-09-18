@@ -16,14 +16,14 @@ import javax.inject.Singleton
 object KeitaModule {
 
     @[Singleton Provides]
-    fun provideRetrofit() : KeitaApi = Retrofit.Builder()
+    fun prvdRtrodsofij() : KeitaApi = Retrofit.Builder()
         .addConverterFactory(ScalarsConverterFactory.create())
         .baseUrl("https://example.com/")
         .build()
         .create(KeitaApi::class.java)
 
     @[Singleton Provides]
-    fun provideMediaPlayer(@ApplicationContext context : Context) : MediaPlayer = MediaPlayer.create(
+    fun prrdlsjfMedlsdjfPla(@ApplicationContext context : Context) : MediaPlayer = MediaPlayer.create(
         context, com.FortuneTiger.FT.Simul.theme.R.raw.soundtrack_compressed
     )
 

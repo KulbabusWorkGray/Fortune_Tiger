@@ -4,24 +4,19 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.annotation.DrawableRes
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import com.FortuneTiger.FT.Simul.theme.R
-import com.FortuneTiger.FT.Simul.theme.screen.SYMBOL_SIZE
+import com.FortuneTiger.FT.Simul.theme.screen.SLdkjfsdf
 import kotlin.math.roundToInt
 import kotlin.properties.Delegates
 
-object Bitmaps {
+object Btpowpoer {
 
-    var isInitialized by mutableStateOf(false)
-
-    var slots: List<ImageBitmap> by Delegates.notNull()
+    var oewudkfs: List<ImageBitmap> by Delegates.notNull()
 
     fun init(resources: Resources) {
-        slots = buildList {
+        oewudkfs = buildList {
             listOf(
                 R.drawable.symbol_1,
                 R.drawable.symbol_2,
@@ -36,19 +31,18 @@ object Bitmaps {
                 R.drawable.symbol_11
             ).forEach {
                 add(
-                    initBitmap(
+                    oiuedkjhvksdLJA(
                         res = it,
-                        width = SYMBOL_SIZE.roundToInt(),
-                        height = SYMBOL_SIZE.roundToInt(),
+                        width = SLdkjfsdf.roundToInt(),
+                        height = SLdkjfsdf.roundToInt(),
                         resources = resources
                     )
                 )
             }
         }
-        isInitialized = true
     }
 
-    private fun initBitmap(
+    private fun oiuedkjhvksdLJA(
         @DrawableRes res: Int,
         width: Int,
         height: Int,

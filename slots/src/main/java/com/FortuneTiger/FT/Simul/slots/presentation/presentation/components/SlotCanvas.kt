@@ -13,20 +13,20 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GamePhase
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GameState
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
-import com.FortuneTiger.FT.Simul.theme.SlotAreaColumnColors
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_AREA_PADDING
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_AREA_SIZE
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMNS
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMN_HEIGHT
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_COLUMN_WIDTH
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.KSweoru
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GSwoer
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
+import com.FortuneTiger.FT.Simul.theme.SDlkfj
+import com.FortuneTiger.FT.Simul.theme.screen.SLDjfsdlf
+import com.FortuneTiger.FT.Simul.theme.screen.sjdhfjs
+import com.FortuneTiger.FT.Simul.theme.screen.lsdfjw
+import com.FortuneTiger.FT.Simul.theme.screen.sadljfwer
+import com.FortuneTiger.FT.Simul.theme.screen.nmbjdshfs
 import com.FortuneTiger.FT.Simul.theme.screen.SLOT_HEIGHT
 
 @Composable
 fun SlotCanvas(
-    state : GameState
+    state : GSwoer
 ) {
     val tm = rememberTextMeasurer()
     Canvas(
@@ -34,25 +34,25 @@ fun SlotCanvas(
     ) {
         drawText(
             textMeasurer = tm,
-            text = state.timeMillis.toString(),
+            text = state.mskdhvczv.toString(),
             style = TextStyle.Default.copy(color = Color.Transparent)
         )
-        repeat(SLOT_COLUMNS) {
-            val colStartX = SLOT_AREA_PADDING * (1+it) + SLOT_COLUMN_WIDTH * it
+        repeat(lsdfjw) {
+            val colStartX = SLDjfsdlf * (1+it) + nmbjdshfs * it
             drawRect(
-                brush = Brush.verticalGradient(colors = SlotAreaColumnColors),
+                brush = Brush.verticalGradient(colors = SDlkfj),
                 topLeft = Offset(
                     x = colStartX,
-                    y = SLOT_AREA_PADDING
+                    y = SLDjfsdlf
                 ),
                 size = Size(
-                    width = SLOT_COLUMN_WIDTH,
-                    height = SLOT_COLUMN_HEIGHT
+                    width = nmbjdshfs,
+                    height = sadljfwer
                 )
             )
-            for (slot in state.columnStates[it].slots) {
+            for (slot in state.oiweuoiurtoqu2135[it].sltolsdfj) {
                 drawImage(
-                    image = slot.bitmap,
+                    image = slot.btmappss,
                     topLeft = Offset(
                         x = colStartX,
                         y = slot.y
@@ -60,15 +60,15 @@ fun SlotCanvas(
                 )
             }
         }
-        if (state.gamePhase is GamePhase.Result && state.gamePhase.isWin) drawBox()
+        if (state.oieuoiwqueoqw is KSweoru.sdlfOI && state.oieuoiwqueoqw.weyriweu) drawBox()
     }
 }
 
 fun DrawScope.drawBox() {
-    val topLeft = Offset(x = 0f, y = SlotViewModel.WIN_Y - (SLOT_HEIGHT*0.2f))
-    val topRight = Offset(x = SLOT_AREA_SIZE, y = SlotViewModel.WIN_Y - (SLOT_HEIGHT*0.2f))
-    val bottomLeft = Offset(x = 0f, y = SlotViewModel.WIN_Y + SLOT_HEIGHT)
-    val bottomRight = Offset(x = SLOT_AREA_SIZE, y = SlotViewModel.WIN_Y + SLOT_HEIGHT)
+    val topLeft = Offset(x = 0f, y = SltBrain.WIN_Y - (SLOT_HEIGHT*0.2f))
+    val topRight = Offset(x = sjdhfjs, y = SltBrain.WIN_Y - (SLOT_HEIGHT*0.2f))
+    val bottomLeft = Offset(x = 0f, y = SltBrain.WIN_Y + SLOT_HEIGHT)
+    val bottomRight = Offset(x = sjdhfjs, y = SltBrain.WIN_Y + SLOT_HEIGHT)
     drawLine(
         color = Color.Red,
         strokeWidth = 10f,

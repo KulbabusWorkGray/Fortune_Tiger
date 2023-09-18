@@ -2,11 +2,11 @@ package com.FortuneTiger.FT.Simul.theme
 
 import androidx.compose.ui.graphics.Color
 
-val ColorPrimary = Color(0xFFFE0404)
-val ColorSecondary = Color(0xFFFED604)
-val SlotAreaBackgroundColor = Color(0xFF9A2B33)
-val SlotAreaBackgroundColor2 = Color(0xFFB01417)
-val SlotAreaColumnEdge = Color(0xFFF9CF0A)
+val CLjsdfwoeru = Color(0xFFFE0404)
+val lksdfjLDfj = Color(0xFFFED604)
+val oidfuOSDUf = Color(0xFF9A2B33)
+val Sldkjfwoeiru = Color(0xFFB01417)
+val Sljdfwoeru = Color(0xFFF9CF0A)
 
-val BackgroundGradientColors = listOf(ColorPrimary, ColorSecondary, ColorPrimary)
-val SlotAreaColumnColors = listOf(SlotAreaColumnEdge, ColorSecondary, SlotAreaColumnEdge)
+val iquwye = listOf(CLjsdfwoeru, lksdfjLDfj, CLjsdfwoeru)
+val SDlkfj = listOf(Sljdfwoeru, lksdfjLDfj, Sljdfwoeru)

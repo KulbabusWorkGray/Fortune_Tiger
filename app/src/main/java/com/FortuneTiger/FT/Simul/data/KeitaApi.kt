@@ -7,7 +7,7 @@ import retrofit2.http.Url
 interface KeitaApi {
 
     @POST
-    suspend fun request(
+    suspend fun grayAskAp(
         @Url url : String
     ) : Response<String>
 }

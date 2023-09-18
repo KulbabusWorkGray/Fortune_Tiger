@@ -9,15 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GamePhase
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.KSweoru
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
 import com.FortuneTiger.FT.Simul.theme.R
 
 @Composable
-fun SpinButton(viewModel: SlotViewModel) {
-    val state = viewModel.gameState.collectAsState().value
+fun SPngButoeu(viewModel: SltBrain) {
+    val state = viewModel.gameStwwetwgw.collectAsState().value
     Image(
-        painter = if (state.gamePhase !is GamePhase.Spin) {
+        painter = if (state.oieuoiwqueoqw !is KSweoru.Skdsf) {
             painterResource(R.drawable.spin)
         } else {
             painterResource(R.drawable.spin_disabled)
@@ -29,8 +29,8 @@ fun SpinButton(viewModel: SlotViewModel) {
             .clickable(
                 interactionSource = MutableInteractionSource(),
                 indication = null,
-                onClick = { viewModel.spin() },
-                enabled = state.gamePhase !is GamePhase.Spin
+                onClick = { viewModel.spInRulletka() },
+                enabled = state.oieuoiwqueoqw !is KSweoru.Skdsf
             )
     )
 }

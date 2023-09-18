@@ -13,10 +13,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.FortuneTiger.FT.Simul.R
-import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
+import com.FortuneTiger.FT.Simul.theme.iquwye
 
 @Composable
-fun ScreenReconnect(
+fun SLDjfoweruewru(
     onReconnect : () -> Unit
 ) {
     Column(
@@ -29,7 +29,7 @@ fun ScreenReconnect(
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = BackgroundGradientColors
+                    colors = iquwye
                 )
             )
     ) {

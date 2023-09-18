@@ -3,37 +3,37 @@ package com.FortuneTiger.FT.Simul.theme.screen
 import android.content.res.Resources
 import kotlin.time.Duration.Companion.seconds
 
-var INSET_SCREEN_WIDTH: Int = minOf(Resources.getSystem().displayMetrics.heightPixels, Resources.getSystem().displayMetrics.widthPixels)
-var INSET_SCREEN_HEIGHT: Int = maxOf(Resources.getSystem().displayMetrics.heightPixels, Resources.getSystem().displayMetrics.widthPixels)
-var SCREEN_HEIGHT : Int = INSET_SCREEN_HEIGHT
-var SCREEN_WIDTH : Int = INSET_SCREEN_WIDTH
+var LSKDjwoeiru: Int = minOf(Resources.getSystem().displayMetrics.heightPixels, Resources.getSystem().displayMetrics.widthPixels)
+var I_scljwe: Int = maxOf(Resources.getSystem().displayMetrics.heightPixels, Resources.getSystem().displayMetrics.widthPixels)
+var S_HEIGHTLJWLRJ : Int = I_scljwe
+var S_WIDlkwljg : Int = LSKDjwoeiru
 
 // FPS
-val FRAME_TIME = 1.seconds.inWholeMilliseconds / 60
+val SLDwoeruew = 1.seconds.inWholeMilliseconds / 60
 
 // Slot Area
-const val SLOT_COLUMNS : Int = 5
-val SLOT_AREA_SIZE : Float = SCREEN_WIDTH * 0.9f
-val SLOT_AREA_PADDING : Float = SLOT_AREA_SIZE * 0.02f
-val SLOT_COLUMN_HEIGHT : Float = SLOT_AREA_SIZE - SLOT_AREA_PADDING * 2
-val SLOT_COLUMN_WIDTH : Float = (SLOT_AREA_SIZE - SLOT_AREA_PADDING * 6) / SLOT_COLUMNS
-val SYMBOL_SIZE : Float = SLOT_COLUMN_WIDTH * 0.9f
+const val lsdfjw : Int = 5
+val sjdhfjs : Float = S_WIDlkwljg * 0.9f
+val SLDjfsdlf : Float = sjdhfjs * 0.02f
+val sadljfwer : Float = sjdhfjs - SLDjfsdlf * 2
+val nmbjdshfs : Float = (sjdhfjs - SLDjfsdlf * 6) / lsdfjw
+val SLdkjfsdf : Float = nmbjdshfs * 0.9f
 
 // Shifting
 const val VISIBLE_SLOTS_IN_COLUMN = 5
-val SLOT_HEIGHT = SLOT_COLUMN_HEIGHT / VISIBLE_SLOTS_IN_COLUMN
+val SLOT_HEIGHT = sadljfwer / VISIBLE_SLOTS_IN_COLUMN
 const val STOPS_DELAY = 1_000
  /* amount of px to shift in frame */
 val SHIFT_SPEED : Float = SLOT_HEIGHT / 5
 
-val FIRST_SLOT_Y = -SLOT_HEIGHT + SLOT_AREA_PADDING
-val TOTAL_SPIN_DURATION = STOPS_DELAY * SLOT_COLUMNS
+val FIRST_SLOT_Y = -SLOT_HEIGHT + SLDjfsdlf
+val TOTAL_SPIN_DURATION = STOPS_DELAY * lsdfjw
 
 // Win
 const val GAMES_BEFORE_WIN_GAME = 4
 const val WIN_SYMBOL_POS = 3
 
 // Bet
-const val BALANCE = 10_000
-const val BET = 500
-const val BET_STEP = 100
+const val SLDJFSD = 10_000
+const val BMDSKHJF = 500
+const val LDSJf_sdf = 100

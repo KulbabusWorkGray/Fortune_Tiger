@@ -20,16 +20,16 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
+import com.FortuneTiger.FT.Simul.theme.iquwye
 import com.FortuneTiger.FT.Simul.theme.R
-import com.FortuneTiger.FT.Simul.theme.SlotAreaBackgroundColor2
-import com.FortuneTiger.FT.Simul.theme.screen.SCREEN_WIDTH
+import com.FortuneTiger.FT.Simul.theme.Sldkjfwoeiru
+import com.FortuneTiger.FT.Simul.theme.screen.S_WIDlkwljg
 
 @Composable
 fun ScreenWin() {
-    val imageSize = remember { androidx.compose.animation.core.Animatable(SCREEN_WIDTH / 2f) }
+    val imageSize = remember { androidx.compose.animation.core.Animatable(S_WIDlkwljg / 2f) }
     LaunchedEffect(Unit) {
-        imageSize.animateTo(SCREEN_WIDTH * 0.7f, animationSpec = tween(durationMillis = 700))
+        imageSize.animateTo(S_WIDlkwljg * 0.7f, animationSpec = tween(durationMillis = 700))
     }
     Column(
         verticalArrangement = Arrangement.spacedBy(
@@ -41,7 +41,7 @@ fun ScreenWin() {
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = BackgroundGradientColors
+                    colors = iquwye
                 )
             )
     ) {
@@ -55,7 +55,7 @@ fun ScreenWin() {
                 modifier = Modifier
                     .fillMaxSize(0.8f)
                     .offset(y = 10.dp)
-                    .background(color = SlotAreaBackgroundColor2)
+                    .background(color = Sldkjfwoeiru)
             )
             Image(
                 painter = painterResource(id = R.drawable.pagoda),

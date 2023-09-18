@@ -19,16 +19,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.BalanceArea
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.SlotArea
-import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.SpinButton
-import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
+import com.FortuneTiger.FT.Simul.slots.presentation.presentation.components.SPngButoeu
+import com.FortuneTiger.FT.Simul.theme.iquwye
 import com.FortuneTiger.FT.Simul.theme.R
 
 @Composable
 fun ScreenGame(
-    viewModel: SlotViewModel
+    viewModel: SltBrain
 ) {
     val activity = (LocalContext.current as ComponentActivity)
     activity.apply {
@@ -50,7 +50,7 @@ fun ScreenGame(
                 .fillMaxSize()
                 .background(
                     brush = Brush.verticalGradient(
-                        colors = BackgroundGradientColors
+                        colors = iquwye
                     )
                 )
         )
@@ -81,8 +81,8 @@ fun ScreenGame(
             modifier = Modifier.fillMaxSize()
         ) {
             SlotArea(viewModel = viewModel)
-            SpinButton(viewModel = viewModel)
-            BalanceArea(viewModel = viewModel)
+            SPngButoeu(viewModel = viewModel)
+            BalanceArea(sdfjkh = viewModel)
         }
     }
 }

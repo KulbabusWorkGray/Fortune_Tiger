@@ -22,12 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GamePhase
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.KSweoru
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
 
 @Composable
-fun BalanceArea(viewModel: SlotViewModel) {
-    val state = viewModel.gameState.collectAsState().value
+fun BalanceArea(sdfjkh: SltBrain) {
+    val lkfw = sdfjkh.gameStwwetwgw.collectAsState().value
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +50,7 @@ fun BalanceArea(viewModel: SlotViewModel) {
                     .height(50.dp),
                 contentScale = ContentScale.Fit
             )
-            Text(text = state.balance.toString(), style = MaterialTheme.typography.bodyMedium)
+            Text(text = lkfw.owqueo1.toString(), style = MaterialTheme.typography.bodyMedium)
         }
         Box(
             modifier = Modifier
@@ -77,11 +77,11 @@ fun BalanceArea(viewModel: SlotViewModel) {
                         .clickable(
                             interactionSource = MutableInteractionSource(),
                             indication = null,
-                            onClick = { viewModel.betMinus() },
-                            enabled = state.gamePhase is GamePhase.Bet
+                            onClick = { sdfjkh.betMinus() },
+                            enabled = lkfw.oieuoiwqueoqw is KSweoru.ncksd
                         )
                 )
-                Text(text = state.bet.toString(), style = MaterialTheme.typography.bodyMedium)
+                Text(text = lkfw.bewlrjgou123.toString(), style = MaterialTheme.typography.bodyMedium)
                 Box(
                     modifier = Modifier
                         .fillMaxHeight()
@@ -89,8 +89,8 @@ fun BalanceArea(viewModel: SlotViewModel) {
                         .clickable(
                             interactionSource = MutableInteractionSource(),
                             indication = null,
-                            onClick = { viewModel.betPlus() },
-                            enabled = state.gamePhase is GamePhase.Bet
+                            onClick = { sdfjkh.betPlus() },
+                            enabled = lkfw.oieuoiwqueoqw is KSweoru.ncksd
                         )
                 )
             }

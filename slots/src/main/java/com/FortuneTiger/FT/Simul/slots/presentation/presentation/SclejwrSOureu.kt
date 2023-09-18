@@ -7,17 +7,17 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.GamePhase
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotScreen
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.KSweoru
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SaltScrelrj
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
+import com.FortuneTiger.FT.Simul.slots.presentation.presentation.screens.ScljewMenuuu
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.screens.ScreenGame
-import com.FortuneTiger.FT.Simul.slots.presentation.presentation.screens.ScreenMenu
 import com.FortuneTiger.FT.Simul.slots.presentation.presentation.screens.ScreenWin
 
 const val targetOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 @Composable
-fun ScreenSlots() {
+fun SclejwrSOureu() {
 
     val activity = LocalContext.current as Activity
     DisposableEffect(targetOrientation) {
@@ -28,18 +28,18 @@ fun ScreenSlots() {
         }
     }
 
-    val viewModel : SlotViewModel = hiltViewModel()
-    val state = viewModel.gameState.collectAsState().value
+    val vlsdfj : SltBrain = hiltViewModel()
+    val oweiuroweu = vlsdfj.gameStwwetwgw.collectAsState().value
 
-    when(state.screen) {
-        SlotScreen.MENU -> {
-            ScreenMenu(viewModel = viewModel)
+    when(oweiuroweu.xbvmnbsjdhfgj) {
+        SaltScrelrj.MENASUO -> {
+            ScljewMenuuu(viewModel = vlsdfj)
         }
-        SlotScreen.GAME -> {
-            if (state.gamePhase is GamePhase.Result && state.gamePhase.isCelebrationScreen) {
+        SaltScrelrj.GALJELR -> {
+            if (oweiuroweu.oieuoiwqueoqw is KSweoru.sdlfOI && oweiuroweu.oieuoiwqueoqw.isCelebrationScreen) {
                 ScreenWin()
             } else {
-                ScreenGame(viewModel = viewModel)
+                ScreenGame(viewModel = vlsdfj)
             }
         }
 

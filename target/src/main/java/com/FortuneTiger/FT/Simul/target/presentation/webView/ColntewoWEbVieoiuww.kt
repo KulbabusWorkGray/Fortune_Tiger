@@ -18,16 +18,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
-import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.webChromeClient
-import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.webViewClient
-import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.webViewSettings
+import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.dlsfjwoeruweouSLJD
+import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.oiweuSDLjfoweiru
+import com.FortuneTiger.FT.Simul.target.presentation.webView.utils.weorusVLeiwStieto
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun MyWebView(
-    img: ActivityResultLauncher<Void?>,
-    setFilePathCallback: (ValueCallback<Array<Uri>>) -> Unit,
-    url: String,
+fun ColntewoWEbVieoiuww(
+    oiwqeu: ActivityResultLauncher<Void?>,
+    lkjfksdjf: (ValueCallback<Array<Uri>>) -> Unit,
+    oweurdlfj: String,
 ) {
     var canGoBack by remember { mutableStateOf(false) }
     var canGoForward by remember { mutableStateOf(false) }
@@ -55,15 +55,15 @@ fun MyWebView(
                 .weight(12f),
             factory = {
                 webView.apply {
-                    webViewSettings()
-                    webChromeClient(img, setFilePathCallback)
-                    webViewClient(
-                        activity = activity,
+                    weorusVLeiwStieto()
+                    dlsfjwoeruweouSLJD(oiwqeu, lkjfksdjf)
+                    oiweuSDLjfoweiru(
+                        dfleworuALJ = activity,
                         setCanGoBack = { canGoBack = it },
                         setCanGoForward = { canGoForward = it },
                         setIsLoading = { isLoading = it }
                     )
-                    loadUrl(url)
+                    loadUrl(oweurdlfj)
                 }
             }
         )

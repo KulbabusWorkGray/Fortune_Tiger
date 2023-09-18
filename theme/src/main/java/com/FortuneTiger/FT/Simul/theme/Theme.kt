@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.TileMode
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val FortuneTigerColorScheme = darkColorScheme(
-    primary = ColorPrimary,
-    secondary = ColorSecondary,
+    primary = CLjsdfwoeru,
+    secondary = lksdfjLDfj,
 )
 
 @Composable
@@ -35,15 +35,15 @@ fun FortuneTigerTheme(
 
     MaterialTheme(
         colorScheme = FortuneTigerColorScheme,
-        typography = Typography,
-        shapes = Shapes,
+        typography = LDjfds,
+        shapes = Sooweru,
         content = {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
                         brush = Brush.linearGradient(
-                            colors = BackgroundGradientColors,
+                            colors = iquwye,
                             tileMode = TileMode.Decal
                         )
                     )

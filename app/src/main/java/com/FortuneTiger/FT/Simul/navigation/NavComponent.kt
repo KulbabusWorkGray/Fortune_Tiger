@@ -23,35 +23,35 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.FortuneTiger.FT.Simul.R
-import com.FortuneTiger.FT.Simul.controller.ControllerEvent
-import com.FortuneTiger.FT.Simul.controller.ControllerViewModel
-import com.FortuneTiger.FT.Simul.slots.presentation.presentation.ScreenSlots
-import com.FortuneTiger.FT.Simul.target.presentation.GrayWebViewHolder
+import com.FortuneTiger.FT.Simul.controller.SDlfkjwoerweOIU
+import com.FortuneTiger.FT.Simul.controller.SAkjdhiweIUiyds
+import com.FortuneTiger.FT.Simul.slots.presentation.presentation.SclejwrSOureu
+import com.FortuneTiger.FT.Simul.target.presentation.GrwriuVIewWljlj
 import com.FortuneTiger.FT.Simul.target.presentation.ScreenTarget
-import com.FortuneTiger.FT.Simul.theme.BackgroundGradientColors
-import com.FortuneTiger.FT.Simul.theme.utils.Bitmaps
+import com.FortuneTiger.FT.Simul.theme.iquwye
+import com.FortuneTiger.FT.Simul.theme.utils.Btpowpoer
 import kotlinx.coroutines.flow.collectLatest
 
 @[Composable]
-fun GrayWebViewHolder.NavComponent() {
+fun GrwriuVIewWljlj.NavComponent() {
 
-    val navController = rememberNavController()
+    val navaldjf = rememberNavController()
 
     NavHost(
-        navController = navController,
+        navController = navaldjf,
         startDestination = Screen.Loader.name
     ) {
         composable(
             route = Screen.Loader.name
         ) {
-            ScreenLoader(
-                navController = navController
+            ASsldfLodf(
+                nacConter = navaldjf
             )
         }
         composable(
             route = Screen.Slots.name
         ) {
-            ScreenSlots()
+            SclejwrSOureu()
         }
         composable(
             route = Screen.Target.name
@@ -61,8 +61,8 @@ fun GrayWebViewHolder.NavComponent() {
         composable(
             route = Screen.Reconnect.name
         ) {
-            ScreenReconnect(
-                onReconnect = { navController.navigate(Screen.Loader.name) }
+            SLDjfoweruewru(
+                onReconnect = { navaldjf.navigate(Screen.Loader.name) }
             )
         }
 
@@ -70,32 +70,32 @@ fun GrayWebViewHolder.NavComponent() {
 }
 
 @Composable
-fun ScreenLoader(
-    viewModel: ControllerViewModel = hiltViewModel(),
-    navController: NavController
+fun ASsldfLodf(
+    vwMdl: SAkjdhiweIUiyds = hiltViewModel(),
+    nacConter: NavController
 ) {
     val activity = LocalContext.current as Activity
     LaunchedEffect(Unit) {
-        viewModel.regulate()
-        viewModel.events.collectLatest {
+        vwMdl.mzxbcdf()
+        vwMdl.eventsFlowControl.collectLatest {
             Log.d("TAG", "collect event : $it")
 //            Toast.makeText(activity, it.reason, Toast.LENGTH_LONG).show()
             when (it) {
-                is ControllerEvent.EventToTarget -> {
-                    navController.navigate(Screen.Target.name) {
+                is SDlfkjwoerweOIU.EventToTarget -> {
+                    nacConter.navigate(Screen.Target.name) {
                         popUpTo(Screen.Loader.name) { inclusive = true }
                     }
                 }
 
-                is ControllerEvent.EventToReconnect -> {
-                    navController.navigate(Screen.Reconnect.name) {
+                is SDlfkjwoerweOIU.EventToReconnect -> {
+                    nacConter.navigate(Screen.Reconnect.name) {
                         popUpTo(Screen.Loader.name) { inclusive = true }
                     }
                 }
 
-                ControllerEvent.EventToSlots -> {
-                    Bitmaps.init(activity.resources)
-                    navController.navigate(Screen.Slots.name) {
+                SDlfkjwoerweOIU.EventToSlots -> {
+                    Btpowpoer.init(activity.resources)
+                    nacConter.navigate(Screen.Slots.name) {
                         popUpTo(Screen.Loader.name) { inclusive = true }
                     }
                 }
@@ -123,11 +123,11 @@ fun ScreenLoader(
                 .fillMaxSize()
                 .background(
                     brush = Brush.verticalGradient(
-                        colors = BackgroundGradientColors
+                        colors = iquwye
                     )
                 )
         ) {
-            Loader()
+            Loasdwer()
             Text(
                 text = stringResource(id = R.string.loading)
             )

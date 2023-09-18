@@ -18,8 +18,8 @@ import androidx.activity.result.launch
 import androidx.core.net.toUri
 
 @SuppressLint("SetJavaScriptEnabled")
-fun WebView.webViewSettings() {
-    val userAgent = settings.userAgentString.formatUserAgent()
+fun WebView.weorusVLeiwStieto() {
+    val usrALjdfljewr = settings.userAgentString.jkwhiiudy()
 
     scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
     isVerticalScrollBarEnabled = true
@@ -32,7 +32,7 @@ fun WebView.webViewSettings() {
         domStorageEnabled = true
         javaScriptCanOpenWindowsAutomatically = true
         loadWithOverviewMode = true
-        userAgentString = userAgent
+        userAgentString = usrALjdfljewr
     }
     layoutParams = ViewGroup.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -40,7 +40,7 @@ fun WebView.webViewSettings() {
     )
 }
 
-fun WebView.webChromeClient(
+fun WebView.dlsfjwoeruweouSLJD(
     img : ActivityResultLauncher<Void?>,
     setFilePathCallback : (ValueCallback<Array<Uri>>) -> Unit
 ) {
@@ -63,8 +63,8 @@ fun WebView.webChromeClient(
     }
 }
 
-fun WebView.webViewClient(
-    activity: Activity,
+fun WebView.oiweuSDLjfoweiru(
+    dfleworuALJ: Activity,
     setCanGoBack: (Boolean) -> Unit,
     setCanGoForward: (Boolean) -> Unit,
     setIsLoading: (Boolean) -> Unit
@@ -78,20 +78,20 @@ fun WebView.webViewClient(
             return try {
                 Log.d("TAG", "uri = ${it.url}")
                 when {
-                    it.url.toString().isPaymentUrl() -> {
-                        activity.startActivity(Intent(Intent.ACTION_VIEW).also { intent ->
+                    it.url.toString().ksdhfAOuoeur() -> {
+                        dfleworuALJ.startActivity(Intent(Intent.ACTION_VIEW).also { intent ->
                             intent.data = Uri.parse(request.url.toString())
                         })
                         true
                     }
                     !it.url.toString().contains("http") -> {
                         val intent = Intent(Intent.ACTION_VIEW, it.url)
-                        activity.startActivity(intent)
+                        dfleworuALJ.startActivity(intent)
                         true
                     }
 
                     it.url.toString().contains("intent://") -> {
-                        activity.startActivity(Intent(Intent.ACTION_VIEW).also { intent ->
+                        dfleworuALJ.startActivity(Intent(Intent.ACTION_VIEW).also { intent ->
                             intent.data = "${request.url}".replace("intent", "https").toUri()
                         })
                         true

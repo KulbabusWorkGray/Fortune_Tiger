@@ -15,16 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SlotViewModel
+import com.FortuneTiger.FT.Simul.slots.presentation.game_logic.SltBrain
 import com.FortuneTiger.FT.Simul.theme.R
-import com.FortuneTiger.FT.Simul.theme.SlotAreaBackgroundColor
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_AREA_PADDING
-import com.FortuneTiger.FT.Simul.theme.screen.SLOT_AREA_SIZE
+import com.FortuneTiger.FT.Simul.theme.oidfuOSDUf
+import com.FortuneTiger.FT.Simul.theme.screen.SLDjfsdlf
+import com.FortuneTiger.FT.Simul.theme.screen.sjdhfjs
 import com.FortuneTiger.FT.Simul.theme.screen.dpFromPx
 
 @Composable
-fun SlotArea(viewModel: SlotViewModel) {
-    val state = viewModel.gameState.collectAsState().value
+fun SlotArea(viewModel: SltBrain) {
+    val state = viewModel.gameStwwetwgw.collectAsState().value
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -33,14 +33,14 @@ fun SlotArea(viewModel: SlotViewModel) {
                 painter = painterResource(id = R.drawable.pagoda),
                 contentScale = ContentScale.Fit
             )
-            .padding(bottom = SLOT_AREA_PADDING.dpFromPx())
+            .padding(bottom = SLDjfsdlf.dpFromPx())
         ,
         contentAlignment = Alignment.BottomCenter
     ) {
         Row(
             modifier = Modifier
-                .size(SLOT_AREA_SIZE.dpFromPx())
-                .background(SlotAreaBackgroundColor),
+                .size(sjdhfjs.dpFromPx())
+                .background(oidfuOSDUf),
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
